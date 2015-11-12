@@ -501,7 +501,7 @@ func (p linux) SetupRawEphemeralDisks(devices []boshsettings.DiskSettings) (err 
 		stdout, _, _, err := p.cmdRunner.RunCommand(
 			"parted",
 			"-s",
-			realPath,SetupEphemeralDiskWithPath
+			realPath,
 			"p",
 		)
 
