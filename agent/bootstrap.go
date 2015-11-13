@@ -42,7 +42,21 @@ func (boot bootstrap) Run() (err error) {
 	if err = boot.platform.SetupRuntimeConfiguration(); err != nil {
 		return bosherr.WrapError(err, "Setting up runtime configuration")
 	}
-        //  delete public key setting temporarily
+
+	publicKey, err := boot.settingsService.PublicSSHKeyForUsername(boshsettings.VCAPUsername)
+	if err != nil {
+		return bosherr.WrapError(err, "Setting up ssh: Getting public key")
+	}
+
+	if len(publicKey) > 0 {
+		if err = boot.platform.SetupSSH(publicKey, boshsettings.VCAPUsername); err != nil {
+			return bosherr.WrapError(err, "Setting up ssh")
+		}
+	}
+
+	if err = boot.settingsService.LoadSettings(); err != nil {
+		return bosherr.WrapError(err, "Fetching settings")
+	}
 
 	settings := boot.settingsService.GetSettings()
 
