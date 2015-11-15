@@ -14,8 +14,8 @@ import (
 
 var _ = Describe("multipathDevicePathResolver", func() {
 	var (
-		diskSettings boshsettings.DiskSettings
-		resolver     DevicePathResolver
+		diskSettings                  boshsettings.DiskSettings
+		resolver                      DevicePathResolver
 		usePreformattedPersistentDisk bool
 	)
 
@@ -27,7 +27,7 @@ var _ = Describe("multipathDevicePathResolver", func() {
 
 	Context("when usePreformattedPersistentDisk is true", func() {
 		BeforeEach(func() {
-				usePreformattedPersistentDisk = true
+			usePreformattedPersistentDisk = true
 			resolver = NewMultipathDevicePathResolver(usePreformattedPersistentDisk)
 		})
 
@@ -41,7 +41,7 @@ var _ = Describe("multipathDevicePathResolver", func() {
 
 	Context("when usePreformattedPersistentDisk is false", func() {
 		BeforeEach(func() {
-				usePreformattedPersistentDisk = false
+			usePreformattedPersistentDisk = false
 			resolver = NewMultipathDevicePathResolver(usePreformattedPersistentDisk)
 		})
 

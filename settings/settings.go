@@ -131,7 +131,7 @@ type Network struct {
 
 	Default []string `json:"default"`
 	DNS     []string `json:"dns"`
-	
+
 	Preconfigured bool `json:"preconfigured"`
 
 	Mac string `json:"mac"`
